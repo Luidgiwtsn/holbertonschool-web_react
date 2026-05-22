@@ -56,7 +56,7 @@ console.log(createEmployee(200));   // Affiche une instance de Teacher
 console.log(createEmployee(1000));  // Affiche une instance de Director
 console.log(createEmployee('$500')); // Affiche une instance de Director
 
-// (Conservez ici tout le code des étapes précédentes : interfaces, classes et createEmployee)
+
 
 // 1. Fonction isDirector (Type Predicate)
 function isDirector(employee: Director | Teacher): employee is Director {
@@ -74,3 +74,19 @@ function executeWork(employee: Director | Teacher): string {
 // 3. Validation (Exemples fournis dans l'énoncé)
 console.log(executeWork(createEmployee(200)));    // Affiche: Getting to work
 console.log(executeWork(createEmployee(1000)));   // Affiche: Getting to director tasks
+
+
+// 1. Définition du String Literal Type
+type Subjects = 'Math' | 'History';
+
+// 2. Fonction teachClass
+function teachClass(todayClass: Subjects): string {
+  if (todayClass === 'Math') {
+    return 'Teaching Math';
+  }
+  return 'Teaching History';
+}
+
+// 3. Validation (Exemples fournis dans l'énoncé)
+console.log(teachClass('Math'));    // Affiche: Teaching Math
+console.log(teachClass('History')); // Affiche: Teaching History
