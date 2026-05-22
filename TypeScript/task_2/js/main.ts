@@ -55,3 +55,22 @@ function createEmployee(salary: number | string): Director | Teacher {
 console.log(createEmployee(200));   // Affiche une instance de Teacher
 console.log(createEmployee(1000));  // Affiche une instance de Director
 console.log(createEmployee('$500')); // Affiche une instance de Director
+
+// (Conservez ici tout le code des étapes précédentes : interfaces, classes et createEmployee)
+
+// 1. Fonction isDirector (Type Predicate)
+function isDirector(employee: Director | Teacher): employee is Director {
+  return (employee as Director).workDirectorTasks !== undefined;
+}
+
+// 2. Fonction executeWork
+function executeWork(employee: Director | Teacher): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  }
+  return employee.workTeacherTasks();
+}
+
+// 3. Validation (Exemples fournis dans l'énoncé)
+console.log(executeWork(createEmployee(200)));    // Affiche: Getting to work
+console.log(executeWork(createEmployee(1000)));   // Affiche: Getting to director tasks
